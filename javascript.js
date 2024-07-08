@@ -57,41 +57,42 @@ function getComputerChoice(){
 }
 
 function playRound(humanChoice, computerChoice){
+    const round = document.querySelector("#round");
+    const results = document.querySelector("#results");
+    const final = document.querySelector("#final");
 
     if ((humanChoice === 'Rock' && computerChoice === 'Paper') || 
         (humanChoice === 'Paper' && computerChoice === 'Scissors') ||
         (humanChoice === 'Scissors' && computerChoice === 'Rock')){
-        alert("You lost! " + computerChoice + " beats " + humanChoice);
+        round.textContent = "You lost! " + computerChoice + " beats " + humanChoice;
         computerScore++;
     }
     else if ((humanChoice === 'Paper' && computerChoice === 'Rock') || 
              (humanChoice === 'Scissors' && computerChoice === 'Paper') ||
              (humanChoice === 'Rock' && computerChoice === 'Scissors')){
-        alert("You won! " + humanChoice + " beats " + computerChoice);
+        round.textContent = "You won! " + humanChoice + " beats " + computerChoice;
         humanScore++;    
     }
     else {
-        alert("It was a draw! You both picked " + humanChoice);
+        round.textContent = "It was a draw! You both picked " + humanChoice;
     }
-    let results = document.querySelector("#results");
+     
+    results.textContent = "You: " + humanScore + " Computer: " + computerScore;
 
     
-    
-    
-    let points = document.createElement("div");
-    points.textContent = "You: " + humanScore + 
-                        " Computer: " + computerScore + "";
-    results.appendChild(points);
-    
-
     if (humanScore === 5){
-        alert("You won!")        
+        final.textContent = "You won! Try again?";
+        humanScore = 0;
+        computerScore = 0;
     }
     else if (computerScore === 5){
-        alert("The computer won :(")
+        final.textContent = "You lost. Try again?";
+        humanScore = 0;
+        computerScore = 0;
+
+    }
+    else {
+        final.textContent = " ";
     }
     
 }
-
-
-
