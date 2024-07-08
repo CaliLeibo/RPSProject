@@ -1,7 +1,23 @@
 let rock = document.querySelector('.rock')
+let paper = document.querySelector('.paper')
+let scissors = document.querySelector('.scissors')
 
 rock.addEventListener("click", () => {
     let choice = rock.getAttribute("class");
+    let humChoice = getHumanChoice(choice);
+    
+    playRound(humChoice, getComputerChoice());
+});
+
+paper.addEventListener("click", () => {
+    let choice = paper.getAttribute("class");
+    let humChoice = getHumanChoice(choice);
+    
+    playRound(humChoice, getComputerChoice());
+});
+
+scissors.addEventListener("click", () => {
+    let choice = scissors.getAttribute("class");
     let humChoice = getHumanChoice(choice);
     
     playRound(humChoice, getComputerChoice());
@@ -17,11 +33,7 @@ function getHumanChoice(choice){
         return 'Paper';
     }
     else if (choice.toLowerCase() === 'scissors'){
-        function playGame(){
-            let humanScore = 0;
-            let computerScore = 0;
         return 'Scissors';
-        }
     }
     else {
         alert("You did not pick a hand!");
