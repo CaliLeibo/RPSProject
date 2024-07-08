@@ -1,3 +1,14 @@
+let rock = document.querySelector('.rock')
+
+rock.addEventListener("click", () => {
+    let choice = rock.getAttribute("class");
+    let humChoice = getHumanChoice(choice);
+    
+    playRound(humChoice, getComputerChoice());
+});
+    
+
+
 function getHumanChoice(choice){
     if (choice.toLowerCase() === 'rock'){
         return 'Rock';
@@ -6,7 +17,11 @@ function getHumanChoice(choice){
         return 'Paper';
     }
     else if (choice.toLowerCase() === 'scissors'){
+        function playGame(){
+            let humanScore = 0;
+            let computerScore = 0;
         return 'Scissors';
+        }
     }
     else {
         alert("You did not pick a hand!");
@@ -27,11 +42,6 @@ function getComputerChoice(){
 }
 
 
-function playGame(){
-    alert("Welcome to Rock, Paper, Scissors! You will be playing five rounds against a computer. Good luck!");
-    let humanScore = 0;
-    let computerScore = 0;
-
     function playRound(humanChoice, computerChoice){
         if ((humanChoice === 'Rock' && computerChoice === 'Paper') || 
             (humanChoice === 'Paper' && computerChoice === 'Scissors') ||
@@ -50,14 +60,8 @@ function playGame(){
             alert("It was a draw! You both picked " + humanChoice);
         }
         alert("You're current score is: \nYou: " + humanScore + "\nComputer: " + computerScore);
-    }
-
-    for (let i = 0; i < 5; i++){
-        let choice = prompt("Rock, paper, or scissors?");
-        const humanSelection = getHumanChoice(choice);
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }
+    
+    
 
     if (humanScore > computerScore){
         alert("You're the winner!");
@@ -70,5 +74,3 @@ function playGame(){
     }
     
 }
-
-playGame();
